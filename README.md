@@ -12,6 +12,7 @@ This is a rewrite of rails/arel from Ruby to Crystal.  This is a work in progres
 # LICENSE
 
 Copyright (c) 2017 Daniel P. Clark
+
 Copyright (c) 2007-2016 Nick Kallen, Bryan Helmkamp, Emilio Tagua, Aaron Patterson
 
 Permission is hereby granted, free of charge, to any person obtaining
