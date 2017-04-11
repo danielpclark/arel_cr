@@ -6,7 +6,7 @@ script:
   - "gem build arel.gemspec"
 env:
   global:
-    - JRUBY_OPTS='--dev -J-Xmx1024M'
+    - JRUBY_OPTS="--dev -J-Xmx1024M"
 rvm:
   - rbx-2
   - jruby-9.0.5.0

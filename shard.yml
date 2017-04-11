@@ -1,0 +1,9 @@
+name: arel_cr
+version: 0.0.1
+
+authors:
+  - Daniel P. Clark <6ftdan@gmail.com>
+
+crystal: 0.21.1
+
+license: MIT

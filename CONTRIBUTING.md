@@ -4,7 +4,7 @@ Contributing to Arel
 [![Build Status](https://secure.travis-ci.org/rails/arel.svg?branch=master)](http://travis-ci.org/rails/arel)
 [![Dependency Status](https://gemnasium.com/rails/arel.svg)](https://gemnasium.com/rails/arel)
 
-Arel is work of [many contributors](https://github.com/rails/arel/graphs/contributors). You're encouraged to submit [pull requests](https://github.com/rails/arel/pulls), [propose features and discuss issues](https://github.com/rails/arel/issues).
+Arel is work of [many contributors](https://github.com/rails/arel/graphs/contributors). You"re encouraged to submit [pull requests](https://github.com/rails/arel/pulls), [propose features and discuss issues](https://github.com/rails/arel/issues).
 
 #### Fork the Project
 
@@ -37,7 +37,7 @@ bundle exec rake test
 
 #### Write Tests
 
-Try to write a test that reproduces the problem you're trying to fix or describes a feature that you want to build. Add to [test](test).
+Try to write a test that reproduces the problem you"re trying to fix or describes a feature that you want to build. Add to [test](test).
 
 We definitely appreciate pull requests that highlight or reproduce a problem, even without a fix.
 
@@ -75,11 +75,11 @@ git push origin my-feature-branch
 
 #### Make a Pull Request
 
-Go to https://github.com/contributor/arel and select your feature branch. Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed within a few days.
+Go to https://github.com/contributor/arel and select your feature branch. Click the "Pull Request" button and fill out the form. Pull requests are usually reviewed within a few days.
 
 #### Rebase
 
-If you've been working on a change for a while, rebase with upstream/master.
+If you"ve been working on a change for a while, rebase with upstream/master.
 
 ```
 git fetch upstream
@@ -93,7 +93,7 @@ Go back to your pull request after a few minutes and see whether it passed muste
 
 #### Be Patient
 
-It's likely that your change will not be merged and that the nitpicky maintainers will ask you to do more, or fix seemingly benign problems. Hang on there!
+It"s likely that your change will not be merged and that the nitpicky maintainers will ask you to do more, or fix seemingly benign problems. Hang on there!
 
 #### Thank You
 

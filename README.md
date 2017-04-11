@@ -18,7 +18,7 @@ database compatibility and query generation.
 
 ## Status
 
-For the moment, Arel uses Active Record's connection adapters to connect to the various engines and perform connection pooling, quoting, and type conversion.
+For the moment, Arel uses Active Record"s connection adapters to connect to the various engines and perform connection pooling, quoting, and type conversion.
 
 ## A Gentle Introduction
 
@@ -32,7 +32,7 @@ you construct a table relation and convert it to SQL:
 
 ```ruby
 users = Arel::Table.new(:users)
-query = users.project(Arel.sql('*'))
+query = users.project(Arel.sql("*"))
 query.to_sql
 ```
 
@@ -40,11 +40,11 @@ query.to_sql
 
 Here is a whirlwind tour through the most common SQL operators. These will probably cover 80% of all interaction with the database.
 
-First is the 'restriction' operator, `where`:
+First is the "restriction" operator, `where`:
 
 ```ruby
-users.where(users[:name].eq('amy'))
-# => SELECT * FROM users WHERE users.name = 'amy'
+users.where(users[:name].eq("amy"))
+# => SELECT * FROM users WHERE users.name = "amy"
 ```
 
 What would, in SQL, be part of the `SELECT` clause is called in Arel a `projection`:
@@ -57,47 +57,47 @@ users.project(users[:id])
 Comparison operators `=`, `!=`, `<`, `>`, `<=`, `>=`, `IN`:
 
 ```ruby
-users.where(users[:age].eq(10)).project(Arel.sql('*'))
+users.where(users[:age].eq(10)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" = 10
 
-users.where(users[:age].not_eq(10)).project(Arel.sql('*'))
+users.where(users[:age].not_eq(10)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" != 10
 
-users.where(users[:age].lt(10)).project(Arel.sql('*'))
+users.where(users[:age].lt(10)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" < 10
 
-users.where(users[:age].gt(10)).project(Arel.sql('*'))
+users.where(users[:age].gt(10)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" > 10
 
-users.where(users[:age].lteq(10)).project(Arel.sql('*'))
+users.where(users[:age].lteq(10)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" <= 10
 
-users.where(users[:age].gteq(10)).project(Arel.sql('*'))
+users.where(users[:age].gteq(10)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" >= 10
 
-users.where(users[:age].in([20, 16, 17])).project(Arel.sql('*'))
+users.where(users[:age].in([20, 16, 17])).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE "users"."age" IN (20, 16, 17)
 ```
 
 Bitwise operators `&`, `|`, `^`, `<<`, `>>`:
 
 ```ruby
-users.where((users[:bitmap] & 16).gt(0)).project(Arel.sql('*'))
+users.where((users[:bitmap] & 16).gt(0)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE ("users"."bitmap" & 16) > 0
 
-users.where((users[:bitmap] | 16).gt(0)).project(Arel.sql('*'))
+users.where((users[:bitmap] | 16).gt(0)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE ("users"."bitmap" | 16) > 0
 
-users.where((users[:bitmap] ^ 16).gt(0)).project(Arel.sql('*'))
+users.where((users[:bitmap] ^ 16).gt(0)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE ("users"."bitmap" ^ 16) > 0
 
-users.where((users[:bitmap] << 1).gt(0)).project(Arel.sql('*'))
+users.where((users[:bitmap] << 1).gt(0)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE ("users"."bitmap" << 1) > 0
 
-users.where((users[:bitmap] >> 1).gt(0)).project(Arel.sql('*'))
+users.where((users[:bitmap] >> 1).gt(0)).project(Arel.sql("*"))
 # => SELECT * FROM "users"  WHERE ("users"."bitmap" >> 1) > 0
 
-users.where((~ users[:bitmap]).gt(0)).project(Arel.sql('*'))
+users.where((~ users[:bitmap]).gt(0)).project(Arel.sql("*"))
 # => SELECT * FROM "users" WHERE  ~ "users"."bitmap" > 0
 ```
 
@@ -133,21 +133,21 @@ The best property of Arel is its "composability," or closure under all operation
 
 ```ruby
 users                                 \
-  .where(users[:name].eq('amy'))      \
+  .where(users[:name].eq("amy"))      \
   .project(users[:id])                \
-# => SELECT users.id FROM users WHERE users.name = 'amy'
+# => SELECT users.id FROM users WHERE users.name = "amy"
 ```
 
 All operators are chainable in this way, and they are chainable any number of times, in any order.
 
 ```ruby
-users.where(users[:name].eq('bob')).where(users[:age].lt(25))
+users.where(users[:name].eq("bob")).where(users[:age].lt(25))
 ```
 
 The `OR` operator works like this:
 
 ```ruby
-users.where(users[:name].eq('bob').or(users[:age].lt(25)))
+users.where(users[:name].eq("bob").or(users[:age].lt(25)))
 ```
 
 The `AND` operator behaves similarly. Here is an example of the `DISTINCT` operator:
@@ -156,7 +156,7 @@ The `AND` operator behaves similarly. Here is an example of the `DISTINCT` opera
 posts = Arel::Table.new(:posts)
 posts.project(posts[:title])
 posts.distinct
-posts.to_sql # => 'SELECT DISTINCT "posts"."title" FROM "posts"'
+posts.to_sql # => "SELECT DISTINCT "posts"."title" FROM "posts""
 ```
 
 Aggregate functions `AVG`, `SUM`, `COUNT`, `MIN`, `MAX`, `HAVING`:
@@ -184,7 +184,7 @@ users.project(users[:age].count)
 Aliasing Aggregate Functions:
 
 ```ruby
-users.project(users[:age].average.as("mean_age"))
+users.project(users[:age].average._as("mean_age"))
 # => SELECT AVG(users.age) AS mean_age FROM users
 ```
 
@@ -215,7 +215,7 @@ products.
 
 #### Complex Joins
 
-Where Arel really shines is in its ability to handle complex joins and aggregations. As a first example, let's consider an "adjacency list", a tree represented in a table. Suppose we have a table `comments`, representing a threaded discussion:
+Where Arel really shines is in its ability to handle complex joins and aggregations. As a first example, let"s consider an "adjacency list", a tree represented in a table. Suppose we have a table `comments`, representing a threaded discussion:
 
 ```ruby
 comments = Arel::Table.new(:comments)
@@ -257,7 +257,7 @@ users.
   project(users[:id], cte_table[:click].sum).
   with(composed_cte)
 
-# => WITH cte_table AS (SELECT FROM photos  WHERE photos.created_at > '2014-05-02')
+# => WITH cte_table AS (SELECT FROM photos  WHERE photos.created_at > "2014-05-02")
 #    SELECT users.id, SUM(cte_table.click)
 #    FROM users INNER JOIN cte_table ON users.id = cte_table.user_id
 ```
@@ -273,7 +273,7 @@ photo_clicks = Arel::Nodes::SqlLiteral.new(<<-SQL
 SQL
 )
 
-photos.project(photo_clicks.as("photo_clicks"))
+photos.project(photo_clicks._as("photo_clicks"))
 # => SELECT CASE WHEN condition1 THEN calculation1
 #    WHEN condition2 THEN calculation2
 #    WHEN condition3 THEN calculation3
@@ -283,7 +283,7 @@ photos.project(photo_clicks.as("photo_clicks"))
 
 ## Contributing to Arel
 
-Arel is the work of many contributors. You're encouraged to submit pull requests, propose
+Arel is the work of many contributors. You"re encouraged to submit pull requests, propose
 features and discuss issues.
 
 See [CONTRIBUTING](CONTRIBUTING.md).
